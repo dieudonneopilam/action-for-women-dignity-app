@@ -1,0 +1,620 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+a{
+    color: black;
+}
+body{
+    background-color: #ffffff;
+}
+
+.header{
+    display: flex;
+    background-color: rgb(3, 3, 46);
+    align-content: center; 
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 200px;
+    z-index: 5;
+}
+
+.div-logo{
+    font-family: sans-serif;
+    color: white;
+    font-size: 80;
+    font-weight: bold;
+    
+}
+.nav-link{
+    padding-right:0px;
+}
+.nav-link-mobile{
+    z-index: 4;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: white;
+    width: 80%;
+}
+.block{
+    display: none;
+}
+.menu{
+    display: none;
+    color: white;
+    z-index: 2;
+}
+@media  only screen and (max-width : 800px) {
+    .nav-link{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+    .header{
+        padding: 0 30px;
+    }
+}
+.nav-link li{
+    display: inline-block;
+    margin: 0 10px;
+    color: white;
+}
+.image-likn-mobile{
+    width: 100%;
+}
+.links-mobile{
+    background-color: white;
+    margin: 10px 20px;
+    text-align: left;
+}
+.links-mobile li{
+    padding: 10px;
+}
+.links-mobile li a{
+    color: gray;
+    font-weight: 500;
+    font-size: 20px;
+}
+.links-mobile li a:hover{
+    text-decoration: underline;
+    color: rgb(15, 81, 214);
+}
+.image-likn-mobile{
+    width: 100%;
+}
+.nav-link a:hover{
+    font-size: 50;
+    color: rgb(161, 161, 197);
+    font-family: sans-serif;
+}
+.nav-link a{
+    font-size: 30;
+    color: white;
+    font-family: sans-serif;
+}
+
+/*main*/
+.main{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 100px 0;
+    justify-content: center;
+    align-content: center;
+}
+
+.card{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 1px 1px 5px rgb(201, 201, 201);
+    
+    margin: auto;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.menu-pubOption{
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px gray;
+    margin-right:15% ;
+    margin-top:5% ;
+    width: 30%;
+}
+.menu-pubOption li{
+    padding: 10px;
+}
+.menu-pubOption li a{
+    display: block;
+    width: 100%;
+    height: 5px 1px;
+}
+@media  only screen and (max-width : 1100px) {
+    .card{
+        width: 80%;
+    }
+}
+@media  only screen and (max-width : 600px) {
+    .card{
+        width: 90%;
+    }
+}
+@media  only screen and (max-width : 400px) {
+    .card{
+        width: 100%;
+    }
+}
+
+.header-pub{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.img-profil{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+.name-asbl{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+.time-pub{
+    color: rgb(70, 70, 70);
+}
+.content-pub{
+    margin-bottom: 10px;
+}
+.img-pub{
+    width:100%;
+} 
+.footer-pub{
+    border-top: 0.5px solid gray;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.like,  .comments, .share{
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    padding: 10px;
+}
+.footer{
+    display: flex;
+    margin-top: 100px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(3, 3, 46);
+}
+@media  screen and (max-width:500px) {
+    .footer{
+        justify-content: space-between;
+    }
+}
+.footer a, .footer h2{
+    color: rgba(255, 255, 255, 0.847);
+    text-transform: lowercase;
+    font-family: sans-serif;
+}
+.footer h2{
+    margin-bottom: 10px;
+}
+.partanaires{
+    text-align: start;
+}
+.partanaires ul, .contact ul, .organisation ul{
+    color: white;
+    margin-left: 30px;
+}
+.partanaires ul li, .contact ul li,  .organisation ul li{
+    list-style-type: decimal;
+    text-align: start;
+    padding: 4px 0;
+}
+.footer a:hover{
+    color: rgb(48, 62, 253);
+    font-size: large;
+}
+
+/*page add publication*/
+
+.div-form{
+    background-color: rgb(253, 253, 253);
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+    padding: 50px;
+}
+@media screen and (max-width:800px) {
+    .div-form{
+        width: 80%;
+        padding: 20px;
+    }
+}
+@media screen and (max-width:500px) {
+    .main{
+        padding: 20px 5px;
+    }
+    .div-form{
+        padding: 10px;
+        width: 100%;
+    }
+}
+.group-form{
+    margin: 10px 0;
+}
+.group-form input[type="text"],
+.group-form input[type="password"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+.group-form button{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(16, 16, 73);
+    border: 1px solid rgb(16, 16, 73);
+    border-radius: 5px;
+    font-size: large;
+    color: white;
+}
+.group-form textarea{
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/*members pages*/
+.members{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 100px auto;
+    align-items: center;
+    align-content: center;
+}
+.menu-options{
+    position: absolute;
+    color: white;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    margin: 10px 5px;
+}
+.options-edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    margin: 10px 40px;
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+}
+.options-edit li a{
+   display: block;
+   padding: 5px;
+   font-size: 20px;
+}
+.card-user{
+    width: 100%;
+    
+}
+.card-member{
+    position: relative;
+    width: 30%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    margin: 10px 0;
+    box-shadow: 1px 1px 10px rgb(224, 224, 224);
+}
+@media  only screen and (max-width : 1100px) {
+    .card-member{
+        width: 45%;
+    }
+}
+@media  only screen and (max-width : 700px) {
+    .members{
+        width: 90%;
+    }
+    .card-member{
+        width: 100%;
+        margin: 10px auto;
+    }
+}
+.image-member{
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.identite{
+    padding: 10px;
+    text-align: center;
+}
+.name{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.fonction{
+    margin: 10px 0;
+    font-weight: 500;
+}
+.social-media{
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+    font-weight: 500;
+}
+.fb,.twt,.wht{
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+}
+.fb{
+}
+.twt{
+}
+.wht{
+
+}
+
+/*about page*/
+.about{
+    background-color: white;
+    margin: 100px auto;
+    width: 80%;
+    border-radius: 5px;
+}
+.about .title{
+    margin: 20px 10px;
+    padding: 10px 5px;
+    margin-top: 20px;
+}
+
+@media  only screen and (max-width : 700px) {
+    .about{
+        width: 90%;
+    }
+}
+.image-about{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+.content-about{
+    margin: 10px 0;
+    text-align: justify;
+    font-size: 18px;
+    padding: 20px;
+}
+
+/*contact page*/
+
+.contactMe{
+    margin: 100px auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contact-left{
+    width: 40%;
+}
+.contact-right{
+    width: 50%;
+}
+
+.image-contact{
+    width: 80%;
+    display: block;
+    margin: 20px auto;
+}
+.contact-title{
+    margin: 20px 50px;
+}
+
+.contact-media{
+    width: 80%;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+@media  only screen and (max-width : 1100px) {
+    .contact-left{
+        width: 50%;
+    }
+    .contact-right{
+        width: 40%;
+    }
+}
+@media  only screen and (max-width : 1000px) {
+    .image-contact{
+        display: none;
+    }
+    .contact-title{
+        display: none;
+    }
+    .contactMe{
+        align-content: center;
+        margin: 100px auto;
+        width: 80%;
+        flex-direction: column-reverse;
+    }
+    .contact-right{
+        width: 80%;
+    }
+}
+@media  only screen and (max-width : 500px) {
+    .contactMe{
+        width: 100%;
+    }
+    .contact-left{
+        width: 80%;
+    }
+}
+.contactMe .group-form{
+    width: 100%;
+}
+
+.contactMe .group-form input{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 20px;
+}
+.contactMe .group-form textarea{
+    width: 100%;
+    border: 1px solid gray;
+}
+.contactMe .group-form button{
+    width: 100%;
+}
+/*login page*/
+.login-content{
+    background-color: white;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    width: 30%;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+@media screen and (max-width:1000px) {
+    .login-content{
+        width: 40%;
+    }
+}
+@media screen and (max-width:800px) {
+    .login-content{
+        width: 60%;
+    }
+}
+@media screen and (max-width:500px) {
+    .login-content{
+        width: 80%;
+    }
+}
+.login-logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 20px 0;
+}
+.login-content div{
+    width: 100%;
+}
+
+.group-form-login{
+    margin: 20px 0;
+}
+
+.login-content input{
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.login-content button{
+    border-radius: 5px;
+    width: 100%;
+    background-color: rgb(12, 98, 235);
+    height: 40px;
+    border: 1px solid rgb(12, 98, 235);
+    font-size: 18px;
+    color: white;
+}
+.div-forget{
+    text-align: right;
+}
+.div-forget a{
+    color: rgb(12, 98, 235);
+}
+.div-with{
+    margin: 20px;
+
+}
+.div-social-media{
+    display: flex;
+    justify-content: space-between;
+}
+.fbk{
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    width: 40%;
+    background-color: rgb(12, 98, 235);
+}
+.ggle{
+    border-radius: 5px;
+    display: inline-block;
+    width: 40%;
+    padding: 10px;
+    background-color: green;
+}
+.fbk a, .ggle a{
+    color: white;
+}
+
+/*add user */
+
+.add-user{
+    width: 40%;
+    margin: 100px auto;
+}
+@media screen and (max-width:800px) {
+    .add-user{
+        width: 50%;
+        
+    }
+}
+@media screen and (max-width:600px) {
+    .add-user{
+        width: 70%;
+        
+    }
+}
+@media screen and (max-width:400px) {
+    .add-user{
+        width: 80%;
+        
+    }
+}
