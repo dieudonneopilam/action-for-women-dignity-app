@@ -21,6 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'isadmin',
+        'file',
+        'ismemberadmin',
+        'fonction',
+        'facebook',
+        'whatsapp',
+        'tweeter'
     ];
 
     /**

@@ -14,11 +14,9 @@ class Publication extends Controller
      */
     public function index()
     {
-        $publications = Pub::all();
+        // $publications = Pub::all();
 
-        return view('pages.home', [
-            'publications' => $publications
-        ]);
+        return view('pages.home');
     }
 
     /**
@@ -55,7 +53,8 @@ class Publication extends Controller
             'text'=>$request->content,
             'file'=>$path,
             'datepub'=>now(),
-            'nblike' => 0
+            'nblike' => 0,
+            'nbcomment' => 0
         ]);
 
         return redirect()->route('oeuvres');
@@ -80,7 +79,11 @@ class Publication extends Controller
      */
     public function edit($id)
     {
-        //
+        $publication = Pub::findOrfail($id);
+
+        return view('pages.editPub',[
+            'publication' => $publication
+        ]);
     }
 
     /**
@@ -92,7 +95,24 @@ class Publication extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'content' => ['required'],
+            'file' => ['required']
+        ]);
+
+        $filename = time().'.'.$request->file->extension();
+
+        $path = $request->file->storeAs(
+            'avatars',
+            $filename,
+            'public'
+        );
+        Pub::findOrFail($id)->update([
+            'text'=>$request->content,
+            'file'=>$path,
+        ]);
+
+        return redirect()->route('oeuvres');
     }
 
     /**
@@ -103,6 +123,8 @@ class Publication extends Controller
      */
     public function destroy($id)
     {
-        //
+        $publication = Pub::findOrFail($id);
+        $publication->delete();
+        return redirect()->route('pub.index');
     }
 }

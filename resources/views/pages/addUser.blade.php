@@ -2,27 +2,39 @@
 @section('main')
     <div class="add-user">
         <p style="font-size: 18;">ajouter un nouveau membre</p>
-        <form action="">
+        <form action="{{ route('members.store') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+
             <div class="group-form">
-                <input type="text" placeholder="nom complet member">
+                <label for="">photo</label>
+                <input type="file" name="file" placeholder="nom complet member">
+            </div>
+            <div class="group-form div-password">
+                <input name="names" type="text" placeholder="nom complet member">
+                <input name="email" type="email" placeholder="entrer le mail">
             </div>
             <div class="group-form">
-                <input type="text" placeholder="fonction member">
+                <input name="fonction" type="text" placeholder="fonction member">
+            </div>
+            <div class="group-form div-password">
+                <input name="password" type="password" placeholder="password">
+                <input name="password_confirmation" type="password" placeholder="confirm password">
+            </div>
+            <div class="group-form div-password">
+                <input name="fbk" type="text" placeholder="adress facebook">
+                <input name="twitter" type="text" placeholder="adress tweeter">
             </div>
             <div class="group-form">
-                <input type="password" placeholder="password">
+                <input name="whatsapp" type="text" placeholder="adress whatsapp">
             </div>
             <div class="group-form">
-                <input type="password" placeholder="confirm password">
+                <input name="isadmin" id="isadmin" type="checkbox">
+                <label for="isadmin">est un administateur</label>
             </div>
-            <div class="group-form">
-                <input type="text" placeholder="adress facebook">
-            </div>
-            <div class="group-form">
-                <input type="text" placeholder="adress tweeter">
-            </div>
-            <div class="group-form">
-                <input type="text" placeholder="adress whatsapp">
+            <div style="">
+                @foreach ($errors->all() as $error)
+                    <p style="color: red">{{ $error }}</p>
+                @endforeach
             </div>
             <div class="group-form">
                 <button class="btn">ajouter</button>

@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 <body>
     @include('layouts.header')
-    <div>
+    <div class="">
         @yield('main')
     </div>
     @include('layouts.footer')
+    @livewireScripts
 </body>
 </html>

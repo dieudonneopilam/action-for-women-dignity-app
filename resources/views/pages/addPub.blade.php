@@ -2,7 +2,8 @@
 @section('main')
 <div class="main">
     <div class="div-form">
-        <h3 style="margin-bottom: 30px;color: rgb(37, 92, 255)">ajouter une nouvelle publication</h3>
+        <p style="margin-bottom: 30px;color: rgb(37, 92, 255)">ajouter une nouvelle publication</p>
+        <img class="img-pub" src="{{ asset('img/pub4.jpeg') }}" alt="">
         <form method="POST" action="{{ route('pub.store') }}" enctype="multipart/form-data" {{ csrf_token() }}>
             {{ csrf_field() }}
             <div class="group-form">

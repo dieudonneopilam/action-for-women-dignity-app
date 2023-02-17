@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Like;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Publication extends Model
 {
@@ -12,6 +14,15 @@ class Publication extends Model
         'text',
         'file',
         'datepub',
-        'nblike'
+        'nblike',
+        'nbcomment'
     ];
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 }

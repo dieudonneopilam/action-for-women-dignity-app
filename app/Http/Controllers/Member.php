@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class Member extends Controller
 {
@@ -13,7 +15,10 @@ class Member extends Controller
      */
     public function index()
     {
-        return view('pages.members');
+        $users = user::all();
+        return view('pages.members',[
+            'users'=>$users
+        ]);
     }
 
     /**
@@ -34,7 +39,39 @@ class Member extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'names' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'fonction' => ['required'],
+            'file' => ['required'],
+            'password' => ['required','confirmed'],
+            'password_confirmation' => ['required'],
+            'fbk' => ['required'],
+            'twitter' => ['required'],
+            'whatsapp' => ['required'],
+        ]);
+
+        $filename = time().'.'.$request->file->extension();
+
+        $path = $request->file->storeAs(
+            'avatars',
+            $filename,
+            'public'
+        );
+       
+        User::create([
+            'name' => $request->names,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'fonction' => $request->fonction,
+            'facebook' => $request->fbk,
+            'file' => $path,
+            'whatsapp' => $request->whatsapp,
+            'tweeter' => $request->twitter,
+            'ismemberadmin' => $request->isadmin != null ? 1 : 0,
+        ]);
+
+        return redirect()->route('members.index');
     }
 
     /**
@@ -45,7 +82,10 @@ class Member extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrfail($id);
+        return view('pages.editUser',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -68,7 +108,39 @@ class Member extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'names' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email,'.$id],
+            'fonction' => ['required'],
+            'file' => ['required'],
+            'password' => ['required','confirmed'],
+            'password_confirmation' => ['required'],
+            'fbk' => ['required'],
+            'twitter' => ['required'],
+            'whatsapp' => ['required'],
+        ]);
+
+        $filename = time().'.'.$request->file->extension();
+
+        $path = $request->file->storeAs(
+            'avatars',
+            $filename,
+            'public'
+        );
+
+        User::findOrFail($id)->update([
+            'name' => $request->names,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'fonction' => $request->fonction,
+            'facebook' => $request->fbk,
+            'file' => $path,
+            'whatsapp' => $request->whatsapp,
+            'tweeter' => $request->twitter,
+            'ismemberadmin' => $request->isadmin != null ? 1 : 0,
+        ]);
+
+        return redirect()->route('members.index');
     }
 
     /**
@@ -79,6 +151,8 @@ class Member extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('members.index');
     }
 }

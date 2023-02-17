@@ -6,7 +6,9 @@
                 <a href="{{ route('members.create') }}">add your new pub</a>
             </div>
         @endisset
+        @forelse ($users as $user)
         <div class="card-member">
+            @if((auth()->user()->ismemberadmin == 1) || (auth()->user()->isadmin == 1) )
             <span class="menu-options">
                 <svg class="points" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -17,14 +19,23 @@
             </span>
             <div class="options-edit">
                 <ul>
-                    <li><a href="">edit</a></li>
-                    <li><a href="">delete</a></li>
+                    <li><a href="{{ route('members.show', $user->id) }}">edit</a></li>
+                    @if(auth()->user()->id != $user->id && auth()->user()->isadmin==1)
+                    <li>
+                        <form action="{{ route('members.destroy',$user->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button style="background-color: transparent;border: transparent;font-size: 18px">delete</button>
+                        </form>
+                    </li>
+                    @endif
                 </ul>
             </div>
-            <img class="image-member" src="{{ asset('img/cambg_1.jpg') }}" alt="" srcset="">
+            @endif
+            <img class="image-member" src="{{ Storage::url($user->file) }}" alt="" srcset="">
             <div class="identite">
-                <p class="name">dieudonne ngwangwa</p>
-                <p class="fonction">CEO of women for women dignity</p>
+                <p class="name">{{ $user->name }}</p>
+                <p class="fonction">{{ $user->fonction }}</p>
                 <p class="social-media">
                     <span class="fb">
                         <a href="">
@@ -50,5 +61,8 @@
                 </p>
             </div>
         </div>
+        @empty
+            
+        @endforelse
     </div>
 @endsection

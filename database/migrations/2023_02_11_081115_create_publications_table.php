@@ -19,6 +19,7 @@ return new class extends Migration
             $table->mediumText('file');
             $table->dateTime('datepub');
             $table->integer('nblike');
+            $table->integer('nbcomment');
             $table->timestamps();
         });
     }

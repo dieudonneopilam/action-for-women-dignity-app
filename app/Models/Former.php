@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Former extends Model
 {
+    protected $fillable = [
+        ' \noms',
+        'domaine',
+        'dateNaissance'
+    ];
     use HasFactory;
 }
