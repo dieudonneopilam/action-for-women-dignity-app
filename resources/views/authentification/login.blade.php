@@ -15,8 +15,9 @@
 <body>
     <div class="login-content">
         <div class="head-login">
-            <p class="title">Women for women dignity</p>
+            
             <img class="login-logo" src="{{ asset('img/cambg_1.jpg') }}" alt="" srcset="">
+            <p class="title">Women for women dignity</p>
         </div>
         <form action="{{ route('auth') }}" method="POST">
             {{ csrf_field() }}
@@ -30,15 +31,8 @@
                 <button type="submit">Login</button>
             </div>
         </form>
-        <div class="div-forget">
-           <a href="">mot de passe oublié</a>
-        </div>
-        <div class="div-with">
-            <span>login with</span>
-        </div>
-        <div class="div-social-media">
-            <span class="fbk"><a href="">facebook</a></span>
-            <span class="ggle"><a href="">google</a></span>
+        <div style="width: 100%;text-align: center">
+            <a style="color: blue" href="{{ route('signup') }}">s'inscrire</a>
         </div>
     </div>
 </body>

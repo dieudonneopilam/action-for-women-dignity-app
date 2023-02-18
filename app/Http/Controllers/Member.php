@@ -155,4 +155,37 @@ class Member extends Controller
         $user->delete();
         return redirect()->route('members.index');
     }
+
+    public function saveUser(Request $request){
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'file' => ['required'],
+            'password' => ['required','confirmed'],
+            'password_confirmation' => ['required'],
+        ]);
+
+        $filename = time().'.'.$request->file->extension();
+
+        $path = $request->file->storeAs(
+            'avatars',
+            $filename,
+            'public'
+        );
+       
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'file' => $path,
+            'fonction' => 'other',
+        ]);
+
+        if(auth()->attempt($request->only('email','password'))){
+            $request->session()->regenerate();
+            return redirect()->route('pub.index');
+        }
+
+        return back()->withErrors(['ces identifiants ne sont pas reconnus'])->onlyInput('email');
+    }
 }

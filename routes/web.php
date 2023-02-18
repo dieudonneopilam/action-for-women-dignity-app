@@ -30,5 +30,9 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('authentification.login');
 })->name('login');
+Route::get('/signup', function () {
+    return view('authentification.signup');
+})->name('signup');
 Route::post('/auth', [AuthController::class,'login'])->name('auth');
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
+Route::post('/save',[Member::class,'saveUser'])->name('save');

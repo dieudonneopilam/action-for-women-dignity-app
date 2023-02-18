@@ -207,8 +207,16 @@ body{
     border-top: 0.5px solid gray;
     margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-top: 10px;
+}
+.error-login{
+    width: 100%;
+    color: red;
+    padding: 10px;
+    background-color: rgb(255, 230, 230);
+    border-radius: 5px;
 }
 .like,  .comments, .share{
     display: flex;
@@ -465,10 +473,11 @@ body{
 }
 
 .image-contact{
-    width: 80%;
+    width: 90%;
     display: block;
     margin: 20px auto;
 }
+
 .contact-title{
     margin: 20px 50px;
 }
