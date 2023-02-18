@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publication as Pub;
+use App\Http\Livewire\Comment;
 use Illuminate\Http\Request;
+use App\Models\Publication as Pub;
 
 class Publication extends Controller
 {
@@ -68,7 +69,10 @@ class Publication extends Controller
      */
     public function show($id)
     {
-        //
+
+        return view('pages.comments',[
+            'id'=>$id
+        ]);
     }
 
     /**

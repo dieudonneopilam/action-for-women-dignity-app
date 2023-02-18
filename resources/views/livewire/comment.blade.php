@@ -1,17 +1,4 @@
 <div class="main">
-    @isset(auth()->user()->name)
-        @if(auth()->user()->isadmin==1 || auth()->user()->ismemberadmin==1)
-        <div class="card-add">
-            <a style="color: blue" href="{{ route('pub.create') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
-                  </svg>
-                  <p>Nouvelle publication</p>
-            </a>
-        </div>
-        @endif
-    @endisset
-    @foreach ($publications as $publication)
     <div class="card">
         <header class="header-pub">
             <div style="display: flex;">
@@ -78,7 +65,7 @@
             </div>
 
             <div class="comments">
-                <a href="{{ route('pub.show',$publication->id)}}">
+                <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
                         <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                       </svg>
@@ -94,7 +81,21 @@
                 </a>
                 <span style="font-size: 14px;margin-left: 16px">144</span>
             </div>
-
+            <p style="width: 100%;color: red">@error('content')
+                {{ $message }}
+            @enderror</p>
+            <form wire:submit.prevent='submit' style="width: 100%; display: flex;justify-content: start;align-items: center;">
+                {{-- {{ csrf_field() }} --}}
+                <div class="group-form" style="width: 90%">
+                    <input type="text" wire:model='content'>
+                    
+                </div>
+                
+                <div >
+                    <button type="submit" style="height: 40px;background-color: rgb(41, 119, 255);padding: 0 10px;border: 1px solid rgb(41, 119, 255);border-radius: 5px;margin-left: 10px">send</button>
+                </div>
+                
+            </form>
             @else
 
             <div class="like">
@@ -107,11 +108,11 @@
             </div>
             
             <div class="comments">
-                <a href="{{ route('pub.show', $publication->id) }}">
+                <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
                         <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                       </svg>
-                </a>
+                </span>
                 <span style="font-size: 14px;margin-left: 10px">{{ $publication->nbcomment }}</span>
             </div>
 
@@ -127,12 +128,23 @@
             <div class="error-login">
                 <span>Veillez vous conncter pour exploiter plus de fonctionalités</span>
             </div>
-
             @endisset
-            
-            
         </footer>
+        <div class="show-comment">
+            @forelse ($publication->comments as $comment)
+            <div class="div-content-comment">
+                <img class="img-profil" src="{{ Storage::url($comment->user->file) }}" alt="">
+                <div class="div-left-comment">
+                    <div class="name-comment">
+                        <p class="title-name">{{ $comment->user->name }}</p>
+                        <p class="timeComment">{{ $comment->dateComment }}</p>
+                    </div>
+                    <div class="content-comment">{{ $comment->content }}</div>
+                </div>
+            </div>
+            @empty
+                <h4>Aucun commentaire pour cette publication</h4>
+            @endforelse
+        </div>
     </div>
-    @endforeach
-    
 </div>

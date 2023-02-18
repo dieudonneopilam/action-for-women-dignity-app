@@ -681,3 +681,35 @@ body{
     margin: 20px;
     text-align: center;
 }
+
+/**/
+.show-comment{
+    
+    
+    padding: 10px;
+}
+.div-content-comment{
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+}
+.div-left-comment{
+    display: flex;
+    flex-direction: column;
+}
+.name-comment{
+    margin-bottom: 10px;
+}
+.title-name{
+    font-size: 18px;
+    font-weight:500;
+    color: black;
+    margin-bottom: 2px;
+}
+.timeComment{
+    font-size: 16px;
+    color: gray;
+}
+.content-comment{
+    font-style: italic;
+}

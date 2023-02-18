@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('publication_id')
                   ->constrained();
             $table->dateTime('dateComment');
+            $table->mediumText('content');
             $table->timestamps();
         });
     }

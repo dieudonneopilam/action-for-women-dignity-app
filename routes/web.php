@@ -4,6 +4,7 @@ use App\Http\Controllers\Member;
 use App\Http\Controllers\Publication;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Livewire\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,4 @@ Route::get('/signup', function () {
 })->name('signup');
 Route::post('/auth', [AuthController::class,'login'])->name('auth');
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
-Route::post('/save',[Member::class,'saveUser'])->name('save');
+Route::post('/save',[Comment::class,'store'])->name('store');
